@@ -42,7 +42,7 @@ extension ImageListVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
        let lastItem = arrImageList.count - 1
-       if indexPath.row == lastItem {
+        if indexPath.row == lastItem  && arrImageList.count < 38{
            getResult()
        }
    }

@@ -5,7 +5,7 @@ import Alamofire
 
 extension ImageListVC{
     func hitCatsApi(){
-        let request = AF.request("https://api.thecatapi.com/v1/images/search?limit=10&page=\(pageNumber)&order=Desc", method: .get, parameters: nil, headers: nil)
+        let request = AF.request("https://api.thecatapi.com/v1/images/search?limit=9&page=\(pageNumber)&order=Desc", method: .get, parameters: nil, headers: nil)
         request.responseJSON(completionHandler: { response in
             switch response.result{
             case .success(let anyValue):
@@ -13,6 +13,9 @@ extension ImageListVC{
                 for each in arrDict{
                     let data = ImageConfigurations(data: each)
                     self.arrImageList.append(data)
+                }
+                if self.arrImageList.count > 38{
+                    self.arrImageList.removeLast(self.arrImageList.count - 38)
                 }
                 self.pageNumber += 1
                 self.tblViewImages.reloadData()
