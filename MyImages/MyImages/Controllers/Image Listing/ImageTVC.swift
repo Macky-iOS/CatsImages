@@ -5,14 +5,18 @@ import SDWebImage
 
 class ImageTVC: UITableViewCell {
 
+    //MARK: - Outlet
     @IBOutlet weak var imgCats: UIImageView!
     
+    //MARK: - Helper Functions
     func configure(data: ImageConfigurations){
         imgCats.loadWithIndicator(fromUrlString: data.url)
     }
     
 }
 
+
+//MARK: - Image View Indicator showing
 
 extension UIImageView {
     
